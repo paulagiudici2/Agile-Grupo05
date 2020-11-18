@@ -6,26 +6,60 @@
     <title>@ViewData["Title"] - ProyectoFFHD</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/index.css" />
+    <link rel="stylesheet" type="text/javascript" href="~/js/site.js" />
+    <link rel="stylesheet" type="text/css" href="~/lib/jquery/dist/jquery.min.js" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" />
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="color-encabezado">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" style="background-color: #1c0d0d;">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProyectoFFHD</a>
+                <a class="navbar-brand texto-navegador" asp-area="" asp-controller="Home" asp-action="Index">Far From Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+
+
+                <script>
+                    $(document).ready(function () {
+                        $("#myInput").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function () {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+                </script>
+
+                <!--<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">-->
+                @*<ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+        </ul>*@
+                <!--</div>-->
+                @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>*@
+
             </div>
         </nav>
     </header>
@@ -33,11 +67,36 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <div class="container mt-3">
+
+            
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Raza</th>
+                        <th>Color</th>
+                        <th>Contacto</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+
+                    <tr>
+                        <td>Beagle</td>
+                        <td>Tricolor</td>
+                        <td>01158759624</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <p>...</p>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
-            &copy; 2020 - ProyectoFFHD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - ProyectoFFH - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

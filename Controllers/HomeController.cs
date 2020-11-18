@@ -28,6 +28,12 @@ namespace ProyectoFFHD.Controllers
             return View();
         }
 
+        public IActionResult Grilla()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
